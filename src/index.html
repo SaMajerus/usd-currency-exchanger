@@ -29,6 +29,7 @@
       <input id="usd-amt-input" type="text" name="usd-amount">
       <label for="tgt-for-conv">Select the currency you wish to exchange:  </label>
       <select id="tgt-for-conv">
+        <!--The 'value' for each currency's option-tag is set to that currency's "ISO 4217 Three-Letter Currency Code", to cut down on any parsing tasks that have to be done in the 'handleFormSubmission' UI Logic function.  This way, the Currency Code can be fed directly into the API Call Service function as the function call's argument.--> 
         <option value="0"> </option>
         <option value="AUD"> Australian Dollar (AUD) </option>
         <option value="BZD"> Belize Dollar (BZD) </option>
@@ -45,7 +46,8 @@
       </select>
       <button type="submit" id="getExchangeVal">Get Current Exchange Value!</button>
     </form>
-    <p id="showResponse"></p>
+    <div id="input-amt-storage" class="hidden"></div>
+    <p id="showConvertedAmt"></p>
   </div>
 </body>
 </html>
