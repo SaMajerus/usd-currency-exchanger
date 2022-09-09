@@ -19,10 +19,10 @@ export function getConvRate(target, inputAmt) {  //'target' currency for convers
 function printElements(apiResponse, tgt, amt) { 
   let userInputAmt = parseFloat(amt); 
   let convertedAmt = userInputAmt * apiResponse.conversion_rate; 
-  console.log(`The conversion rate from USD to ${tgt} is ${apiResponse.conversion_rate}. 
-  Thus, the result of exchanging $${userInputAmt}USD for ${tgt} =    ${convertedAmt} ${tgt}.`);
+  // console.log(`The conversion rate from USD to ${tgt} is ${apiResponse.conversion_rate}. 
+  // Thus, the result of exchanging $${userInputAmt}USD for ${tgt} =    ${convertedAmt} ${tgt}.`);
   document.querySelector('p#showResult').innerText = `The conversion rate from USD to ${tgt} is ${apiResponse.conversion_rate}. 
-  Thus, the result of exchanging $${userInputAmt}USD for ${tgt} =    ${convertedAmt} ${tgt}.`; 
+  Thus: $${userInputAmt} USD =   ${convertedAmt} ${tgt}.`; 
 }
 
 function printError(request, apiResponse, tgt) {
