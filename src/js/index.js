@@ -10,8 +10,7 @@ function handleFormSubmission(event) {
   const amtInput = document.querySelector('input#usd-amt-input').value; 
   const convertTo = document.querySelector('select#tgt-for-conv').value; 
   document.querySelector('input#usd-amt-input').value = null; 
-  document.querySelector('select#tgt-for-conv').value = "0"; 
-  //document.querySelector('div#input-amt-storage').innerHTML = amtInput; //Stores the USD-amount input by user, so it can be accessed later (bypassing any potential scoping issues we would otherwise have). 
+  document.querySelector('select#tgt-for-conv').value = "0";  
   getConvRate(convertTo, amtInput); 
 }
 
