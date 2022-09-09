@@ -20,10 +20,17 @@ function printElements(apiResponse, tgt) {
   let userInputAmt = parseFloat(document.querySelector('div#input-amt-storage').innerHTML); 
   let convertedAmt; 
   convertedAmt = userInputAmt * apiResponse.conversion_rate; 
-  document.querySelector('p#showConvertedAmt').innerText = `The conversion rate from USD to ${tgt} is ${apiResponse.conversion_rate}. 
+  document.querySelector('p#showResult').innerText = `The conversion rate from USD to ${tgt} is ${apiResponse.conversion_rate}. 
   Thus, the result of exchanging $${userInputAmt}USD for ${tgt} =    ${convertedAmt} ${tgt}.`; 
 }
 
+/*
+function printElements(apiResponse) {  //This 1-parameter version of the finished function (above) was created for use in Jest tests (at least, that's the idea).
+  const returnedR8 = apiResponse.conversion_rate; 
+  return returnedR8;  
+}
+*/
+
 function printError(request, apiResponse, tgt) {
-  document.querySelector('#showResponse').innerText = `There was an error accessing the conversion rate for ${tgt}: ${request.status} ${request.statusText}: ${apiResponse.message}`;
+  document.querySelector('#showResult').innerText = `There was an error accessing the conversion rate for ${tgt}: ${request.status} ${request.statusText}: ${apiResponse.message}`;
 }
