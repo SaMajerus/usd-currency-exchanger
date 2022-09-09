@@ -1,5 +1,5 @@
 /*     'API Call Service' Logic     */ 
-export function getConvRate(target) {  //'target' currency for conversion (the 'to' in "from -> to") is passed into fn. 
+export function getConvRate(target, inputAmt) {  //'target' currency for conversion (the 'to' in "from -> to") is passed into fn. 
   let promise = new Promise(function(resolve, reject){
     let request = new XMLHttpRequest();
     const url = `https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/USD/${target}`; 
@@ -7,32 +7,31 @@ export function getConvRate(target) {  //'target' currency for conversion (the '
     request.addEventListener("loadend", function() {
       const response = JSON.parse(this.responseText);
       if (this.status === 200) {
-        resolve([response, target]);
+        resolve([response, target, inputAmt]);
         //printElements(response, target); 
       } else { 
-        reject([this, response, target]);
+        reject(this, response, target);
         //printError(this, response, target); 
       }
     });
-
     request.open("GET", url, true);
     request.send();
-
   });
 
-  promise.then(function(apiResponseArray){
-    printElements(apiResponseArray);
-  }, function(errorMsg){
-    printError(errorMsg);
-  });
+  promise.then(function(dataResponseArray) { 
+    printElements(dataResponseArray); 
+  }, function(errorMsg) { 
+    printError(errorMsg); 
+  }); 
 }
 
-function printElements(apiResponse, tgt) { 
-  let userInputAmt = parseFloat(document.querySelector('div#input-amt-storage').innerHTML); 
+function printElements(dataArr) { 
+  let userInputAmt = parseFloat(dataArr[2]); 
   let convertedAmt; 
-  convertedAmt = userInputAmt * apiResponse.conversion_rate; 
-  document.querySelector('p#showResult').innerText = `The conversion rate from USD to ${tgt} is ${apiResponse.conversion_rate}. 
-  Thus, the result of exchanging $${userInputAmt}USD for ${tgt} =    ${convertedAmt} ${tgt}.`; 
+  //convertedAmt= userInputAmt * apiResponse.conversion_rate;
+  convertedAmt = userInputAmt * dataArr[0][9]; 
+  document.querySelector('p#showResult').innerText = `The conversion rate from USD to ${dataArr[1]} is ${dataArr[0][9]}. 
+  Thus, the result of exchanging $${userInputAmt}USD for ${dataArr[1]} =    ${convertedAmt} ${dataArr[1]}.`; 
 }
 
 /*
