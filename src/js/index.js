@@ -1,21 +1,9 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/styles.css';
+import './../css/styles.css';
 import {getConvRate} from './exchange.js'; 
 
 /*     UI Logic     */ 
-function printElements(apiResponse, tgt) { 
-  let userInputAmt = parseFloat(document.querySelector('div#input-amt-storage').innerHTML); 
-  let convertedAmt; 
-  convertedAmt = userInputAmt * apiResponse.conversion_rate; 
-  document.querySelector('p#showConvertedAmt').innerText = `The conversion rate from USD to ${tgt} is ${apiResponse.conversion_rate}. 
-  Thus, the result of exchanging $${userInputAmt}USD for ${tgt} =    ${convertedAmt} ${tgt}.`; 
-}
-
-function printError(request, apiResponse, tgt) {
-  document.querySelector('#showResponse').innerText = `There was an error accessing the conversion rate for ${tgt}: ${request.status} ${request.statusText}: ${apiResponse.message}`;
-}
-
 function handleFormSubmission(event) {
   event.preventDefault(); 
   const amtInput = document.querySelector('input#usd-amt-input').value; 
