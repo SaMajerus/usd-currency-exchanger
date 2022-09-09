@@ -1,15 +1,13 @@
-import {printElements} from './../src/js/exchange.js';
+import {getConvRate} from './../src/js/exchange.js';
 
-describe('printElements', () => {
+describe('getConvRate', () => {
 
-  test("it should parse the API's response, and save the conversion rate (for USD -> 'UAH'). ['UAH' = currency code for Ukrainian Hryvnia']", () => {
-    /* The content of 'response' is based on the 'Pair-Endpoint' example response from the API documentation (see link):  https://www.exchangerate-api.com/docs/pair-conversion-requests */ 
-    let response = { 
-      "base_code": "USD",
-      "target_code": "UAH",
-      "conversion_rate": 37.1618
-    };
-    let retval = printElements(response);
-    expect(retval).toEqual(response.conversion_rate); 
+  /* 'UAH' is the currency code for the Ukrainian Hryvnia. */ 
+  test("It should call the API, parse its response for the conversion rate (for USD -> 'UAH'), and print the result message.", () => {
+    const tgt = "UAH"; 
+    let amount = 50.00; 
+    let retval = getConvRate(tgt, amount);
+    
+    expect(typeof retval === String); 
   });
 });
