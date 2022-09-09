@@ -6,7 +6,7 @@ describe('getConvRate', () => {
   test("It should call the API, parse its response for the conversion rate (for USD -> 'UAH'), and print the result message.", () => {
     const tgt = "UAH"; 
     let amount = 50.00; 
-    let retval = getConvRate(tgt, amount);
+    const retval = getConvRate(tgt, amount);
     
     expect(typeof retval === String); 
   });
