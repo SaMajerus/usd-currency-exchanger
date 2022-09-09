@@ -1,19 +1,30 @@
 /*     'API Call Service' Logic     */ 
 export function getConvRate(target) {  //'target' currency for conversion (the 'to' in "from -> to") is passed into fn. 
-  let request = new XMLHttpRequest();
-  const url = `https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/USD/${target}`; 
+  let promise = new Promise(function(resolve, reject){
+    let request = new XMLHttpRequest();
+    const url = `https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/USD/${target}`; 
 
-  request.addEventListener("loadend", function() {
-    const response = JSON.parse(this.responseText);
-    if (this.status === 200) {
-      printElements(response, target); 
-    } else { 
-      printError(this, response, target); 
-    }
+    request.addEventListener("loadend", function() {
+      const response = JSON.parse(this.responseText);
+      if (this.status === 200) {
+        resolve([response, target]);
+        //printElements(response, target); 
+      } else { 
+        reject([this, response, target]);
+        //printError(this, response, target); 
+      }
+    });
+
+    request.open("GET", url, true);
+    request.send();
+
   });
 
-  request.open("GET", url, true);
-  request.send();
+  promise.then(function(apiResponseArray){
+    printElements(apiResponseArray);
+  }, function(errorMsg){
+    printError(errorMsg);
+  });
 }
 
 function printElements(apiResponse, tgt) { 
