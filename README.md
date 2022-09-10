@@ -1,21 +1,27 @@
-# _{Application Name}_
+# Currency Exchanger (USD to almost anything)
 
-#### By _**{List of contributors}**_
+#### By Sam Majerus
 
-#### _{Brief description of application}_
+#### Uses a currency exchange API to check conversion rates in real time, then multiply by the user-entered amount in USD to print the equivalent, converted-value in the selected currency. 
 
 ## Technologies Used
 
-* _List all_
-* _the major technologies_
-* _you used in your project_
-* _here_
+* JavaScript (JS) 
+* Node Package Manager (npm)
+* JSON
+* webpack
+* webpack-cli
+* webpack-dev-server
+* clean-webpack-plugin
+* EsLint
+* Markdown
+* Git Bash (Used in: Local Cmd-line Terminal, navigation of local directories)
+* GitHub (Remote repositories)
+* GitHub template repository (OpenWeatherAPI project)
 
 ## Description
 
 _{This is a detailed description of your application. Give as much detail as needed to explain what the application does as well as any other information you want users or other developers to have.}_
-
-## Tests
 
 ## Setup/Installation Requirements
 
@@ -29,11 +35,9 @@ _{Leave nothing to chance! You want it to be easy for potential users, employers
 
 ## Known Bugs
 
-* _Any known issues_
-* _should go here_
+* The error message for 'entering an amount but selecting a target currency for exchange' may also print if one simply clicks the Submit button without touching the input field or select box first. 
 
 ## License
+Email me at ladolego@gmail.com for questions, ideas, concerns, or even any issues that you run into. You may also clone or Fork the content in this Repo to fiddle around with it, if you like.
 
-_{Let people know what to do if they run into any issues or have questions, ideas or concerns.  Encourage them to contact you or make a contribution to the code.}_
-
-Copyright (c) _date_ _author name(s)_
+Licensed through MIT. Copyright (c) 9/09/2022, Samuel Majerus.
