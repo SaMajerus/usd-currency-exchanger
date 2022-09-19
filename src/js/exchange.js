@@ -1,28 +1,31 @@
 /*     'API Call Service' Logic     */ 
-export function getConvRate(target, inputAmt) {  //'target' currency for conversion (the 'to' in "from -> to") is passed into fn. 
-  let request = new XMLHttpRequest();
-  const url = `https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/USD/${target}`; 
+export default class convertCurrency {
+  static getConvAmt(target, inputAmt){
+    return fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/USD/${target}/${inputAmt}`)
+      .then(function(response) {
+        if (!response.ok) {
+          const errorMessage = `${response.status} ${response.statusText}`;
+          throw new Error(errorMessage);
+        } else {
+          return response.json();
+        }
+      })      
+      .catch(function(error) {
+        return error;
+      });
 
-  request.addEventListener("loadend", function() {
-    const response = JSON.parse(this.responseText);
-    if (this.status === 200) {
-      printElements(response, target, inputAmt); 
-    } else { 
-      printError(this, response, target); 
-    }
-  });
-
-  request.open("GET", url, true);
-  request.send();
+  }
 }
 
-function printElements(apiResponse, tgt, amt) { 
-  let userInputAmt = parseFloat(amt); 
-  let convertedAmt = userInputAmt * apiResponse.conversion_rate; 
-  document.querySelector('p#showResult').innerText = `The conversion rate from USD to ${tgt} is ${apiResponse.conversion_rate}. 
-  Thus: $${userInputAmt} USD =   ${convertedAmt} ${tgt}.`; 
-}
 
-function printError(request, apiResponse, tgt) {
-  document.querySelector('#showResult').innerText = `There was an error accessing the conversion rate for ${tgt}: ${request.status} ${request.statusText}: ${apiResponse.message}`;
-}
+
+// function printElements(apiResponse, tgt, amt) { 
+//   let userInputAmt = parseFloat(amt); 
+//   let convertedAmt = userInputAmt * apiResponse.conversion_rate; 
+//   document.querySelector('p#showResult').innerText = `The conversion rate from USD to ${tgt} is ${apiResponse.conversion_rate}. 
+//   Thus: $${userInputAmt} USD =   ${convertedAmt} ${tgt}.`; 
+// }
+
+// function printError(request, apiResponse, tgt) {
+//   document.querySelector('#showResult').innerText = `There was an error accessing the conversion rate for ${tgt}: ${request.status} ${request.statusText}: ${apiResponse.message}`;
+// }

@@ -1,7 +1,7 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../css/styles.css';
-import {getConvRate} from './exchange.js'; 
+import convertCurrency from './exchange.js'; 
 
 /*     UI Logic     */ 
 function handleFormSubmission(event) {
@@ -11,13 +11,14 @@ function handleFormSubmission(event) {
   //Storage vars for input values
   const amtInput = document.querySelector('input#usd-amt-input').value;  //The value entered by the user (presumably a numerical amount in USD). 
   const convertTo = document.querySelector('select#tgt-for-conv').value; 
-  
+  let convertedAmt; //Stores the retval from 'getConvertedAmt'. 
+
   if (!(convertTo === "0")){
-    if (typeof amtInput){
+    if (typeof amtInput === Number){
       document.querySelector('input#usd-amt-input').value = null; 
       document.querySelector('select#tgt-for-conv').value = "0";  
-      getConvRate(convertTo, amtInput);  
-    }else{
+      convertedAmt = parseFloat(convertCurrency.getConvAmt(convertTo, amtInput));  
+    } else {
       document.querySelector("#showResult").innerText = "Invalid input for USD value. Please try again.";  
     }
   } else {
