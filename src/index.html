@@ -4,49 +4,47 @@
   <title>Currency Exchanger! (USD to something else)</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Exchange USD to see its value in another currency! </h1>
-    <p>Enter an amount in USD (United States Dollar) for conversion into any** of the currencies listed below! 
-      **(For a full list of supported currencies, click the link and look for the "All Supported Currencies" header (3rd from top):  https://www.exchangerate-api.com/docs/supported-currencies)</p>
-    
-     <pre>
-      Australian Dollar (AUD) 
-      Belize Dollar (BZD) 
-      Canadian Dollar (CAD) 
-      Chinese Renminbi (CNY) 
-      Cuban Peso (CUP) 
-      Euro (EUR) 
-      Japanese Yen (JPY) 
-      Pound Sterling (GBP) 
-      Russian Ruble (RUB) 
-      Swiss Francs (CHF) 
-      New Taiwan Dollar (TWD) 
-      Ukrainian Hryvnia (UAH) 
-    </pre>
+  <h1>Exchange USD to see its value in another currency! </h1>
+  <p>Enter an amount in USD (United States Dollar) for conversion into any** of the currencies listed below! 
+    **(For a full list of supported currencies, click the link and look for the "All Supported Currencies" header (3rd from top):    https://www.exchangerate-api.com/docs/supported-currencies)</p>
+  
+    <pre>
+    Australian Dollar (AUD) 
+    Belize Dollar (BZD) 
+    Canadian Dollar (CAD) 
+    Chinese Renminbi (CNY) 
+    Cuban Peso (CUP) 
+    Euro (EUR) 
+    Japanese Yen (JPY) 
+    Pound Sterling (GBP) 
+    Russian Ruble (RUB) 
+    Swiss Francs (CHF) 
+    New Taiwan Dollar (TWD) 
+    Ukrainian Hryvnia (UAH) 
+  </pre>
 
-    <form id="user-input">
-      <label for="usd-amount">Enter an amount in USD (i.e. 100.00):  </label>
-      <input id="usd-amt-input" type="number" name="usd-amount">
-      <label for="tgt-for-conv">Select the currency you wish to exchange:  </label>
-      <select id="tgt-for-conv">
-        <!--The 'value' for each currency's option-tag is set to that currency's "ISO 4217 Three-Letter Currency Code", to cut down on any parsing tasks that have to be done in the 'handleFormSubmission' UI Logic function.  This way, the Currency Code can be fed directly into the API Call Service function as the function call's argument.--> 
-        <option value="0"> </option>
-        <option value="AUD"> Australian Dollar (AUD) </option>
-        <option value="BZD"> Belize Dollar (BZD) </option>
-        <option value="CAD"> Canadian Dollar (CAD) </option>
-        <option value="CNY"> Chinese Renminbi (CNY) </option>
-        <option value="CUP"> Cuban Peso (CUP) </option>
-        <option value="EUR"> Euro (EUR) </option>
-        <option value="JPY"> Japanese Yen (JPY) </option>
-        <option value="GBP"> Pound Sterling (GBP) </option>
-        <option value="RUB"> Russian Ruble (RUB) </option>
-        <option value="CHF"> Swiss Francs (CHF) </option>
-        <option value="TWD"> New Taiwan Dollar (TWD) </option>
-        <option value="UAH"> Ukrainian Hryvnia (UAH) </option>
-      </select>
-      <button type="submit" id="getExchangeVal">Get Current Exchange Value!</button>
-    </form>
-    <p id="showResult"></p>
-  </div>
+  <form id="user-input">
+    <label for="usd-amount">Enter an amount in USD (i.e. 100.00):  </label>
+    <input id="usd-amt-input" type="number" name="usd-amount">
+    <label for="tgt-for-conv">Select the currency you wish to exchange:  </label>
+    <select id="tgt-for-conv">
+      <!--The 'value' for each currency's option-tag is set to that currency's "ISO 4217 Three-Letter Currency Code", to cut down on any parsing tasks that have to be done in the 'handleFormSubmission' UI Logic function.  This way, the Currency Code can be fed directly into the API Call Service function as the function call's argument.--> 
+      <option value="0"> </option>
+      <option value="AUD"> Australian Dollar (AUD) </option>
+      <option value="BZD"> Belize Dollar (BZD) </option>
+      <option value="CAD"> Canadian Dollar (CAD) </option>
+      <option value="CNY"> Chinese Renminbi (CNY) </option>
+      <option value="CUP"> Cuban Peso (CUP) </option>
+      <option value="EUR"> Euro (EUR) </option>
+      <option value="JPY"> Japanese Yen (JPY) </option>
+      <option value="GBP"> Pound Sterling (GBP) </option>
+      <option value="RUB"> Russian Ruble (RUB) </option>
+      <option value="CHF"> Swiss Francs (CHF) </option>
+      <option value="TWD"> New Taiwan Dollar (TWD) </option>
+      <option value="UAH"> Ukrainian Hryvnia (UAH) </option>
+    </select>
+    <button type="submit" id="getExchangeVal">Get Current Exchange Value!</button>
+  </form>
+  <p id="showResult"></p>
 </body>
 </html>

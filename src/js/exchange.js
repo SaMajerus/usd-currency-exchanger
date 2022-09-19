@@ -1,7 +1,7 @@
 /*     'API Call Service' Logic     */ 
-export default class convertCurrency {
-  static getConvAmt(target, inputAmt){
-    return fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/USD/${target}/${inputAmt}`)
+export class convertCurrency {
+  static getConvRate(target){
+    return fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/USD/${target}`)
       .then(function(response) {
         if (!response.ok) {
           const errorMessage = `${response.status} ${response.statusText}`;
@@ -18,7 +18,7 @@ export default class convertCurrency {
 }
 
 
-
+/*     Business Logic     */ 
 // function printElements(apiResponse, tgt, amt) { 
 //   let userInputAmt = parseFloat(amt); 
 //   let convertedAmt = userInputAmt * apiResponse.conversion_rate; 
