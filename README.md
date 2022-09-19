@@ -44,7 +44,7 @@ Once submitted, the program uses the Fetch API to send a call to the ExchangeRat
 * Creating and Storing your API Key
 
   In order for the program to work properly, you need to create and store your free API Key.  To generate the key, we create an account on the ExchangeRate API website. 
-    * Copy-paste the following URL into a new browser tab:     https://app.exchangerate-api.com/sign-up
+    * Copy-paste the following URL into a new browser tab:     [https://app.exchangerate-api.com/sign-up](https://app.exchangerate-api.com/sign-up)
     * When you're ready to create the account, click on the blue button that says  "Accept Terms & Create API Key!". 
     * Switch back into VS Code.  If your command line shows that you're not currently in the root folder, navigate there.  Then, type the following:   'code .env' 
     This creates and opens a hidden file called '.env'.  All we need to do here is type the following:  'API_KEY=[your api key]'.
