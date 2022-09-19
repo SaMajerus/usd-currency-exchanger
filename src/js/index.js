@@ -18,7 +18,7 @@ function handleFormSubmission(event) {
     if (typeof amtInput === Number){
       document.querySelector('input#usd-amt-input').value = null; 
       document.querySelector('select#tgt-for-conv').value = "0";  
-      convRate = ConvertCurrency.getConvRate(convertTo, amtInput);  
+      convRate = ConvertCurrency.getConvRate(convertTo);  
     } else {
       document.querySelector("#showResult").innerText = "Invalid input for USD value. Please try again.";  
     }
