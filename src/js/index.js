@@ -1,8 +1,8 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../css/styles.css';
-import convertCurrency from './exchange.js'; 
-import {calcConv} from './calculate.js'; 
+import ConvertCurrency from './exchange.js'; 
+import calcConv from './calculate.js'; 
 
 /*     UI Logic     */ 
 function handleFormSubmission(event) {
@@ -18,7 +18,7 @@ function handleFormSubmission(event) {
     if (typeof amtInput === Number){
       document.querySelector('input#usd-amt-input').value = null; 
       document.querySelector('select#tgt-for-conv').value = "0";  
-      convRate = convertCurrency.getConvRate(convertTo, amtInput);  
+      convRate = ConvertCurrency.getConvRate(convertTo, amtInput);  
     } else {
       document.querySelector("#showResult").innerText = "Invalid input for USD value. Please try again.";  
     }
